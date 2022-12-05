@@ -34,6 +34,8 @@ function App() {
           <div className={styles['list-tasks']}>
 
             <Task />
+            <Task />
+            <Task />
 
             {/* <div className={styles['message-list-emtpy']}>
               <ClipboardText size={62} weight='thin' />

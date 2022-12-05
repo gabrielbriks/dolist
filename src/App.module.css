@@ -110,6 +110,9 @@
   align-items: center;
 }
 
+.list-tasks div  {
+  margin-bottom: 1rem;
+}
 
 .header-count-tasks-created > strong{
   color: var(--blue);
