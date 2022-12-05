@@ -1,5 +1,5 @@
 import { ClipboardText } from 'phosphor-react'
-import { useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, InvalidEvent, useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 import styles from './App.module.css'
 import { Header } from './components/Header'
@@ -36,27 +36,59 @@ function App() {
   const [totalTasks, setTotalTasks] = useState(0);
   const [totalTasksCompleted, setTotalTasksCompleted] = useState(0);
 
+  const [newDescriptionTask, setNewDescriptionTask] = useState('');
+
+
   useEffect(() => {
     let countTasks = listTasks.length
     let countTasksCompleted = listTasks.filter(f => f.completed).length;
 
     setTotalTasks(countTasks);
     setTotalTasksCompleted(countTasksCompleted);
-    setListTasks(listTasksRepos);
+    // setListTasks(listTasksRepos);
 
 
   }, [listTasks]);
+
+
+  function handleCreateNewTask(event: FormEvent) {
+    event.preventDefault();
+
+    let newTask = {
+      id: uuid(),
+      description: newDescriptionTask,
+      completed: false,
+    } as ITask;
+
+    setListTasks([...listTasks, newTask]);
+  }
+
+  function handleNewCommentChange(event: ChangeEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('');
+    setNewDescriptionTask(event.target.value);
+  }
+
+  function handleNewDescriptionTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('Insira a descrição da tarefa.');
+  }
+
 
   return (
     <div className={styles.App}>
       <Header />
 
       <main className={styles.wrapper}>
-        <div className={styles['area-create']}>
-          <input placeholder='Adicione uma nova tarefa' />
-          <button>Criar</button>
+        <form onSubmit={handleCreateNewTask} className={styles['area-create']}>
+          <input
+            placeholder='Adicione uma nova tarefa'
+            value={newDescriptionTask}
+            onChange={handleNewCommentChange}
+            onInvalid={handleNewDescriptionTaskInvalid}
+            required
+          />
+          <button type='submit'>Criar</button>
 
-        </div>
+        </form>
 
         <div className={styles['area-list-tasks']}>
           <header className={styles['header-list-tasks']}>
@@ -77,7 +109,7 @@ function App() {
               listTasks.length > 0 ?
                 listTasks.map(task => {
                   return (
-                    <Task id={task.id} description={task.description} completed={task.completed} />
+                    <Task key={task.id} id={task.id} description={task.description} completed={task.completed} />
                   )
                 })
                 :
