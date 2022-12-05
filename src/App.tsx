@@ -6,30 +6,6 @@ import { Header } from './components/Header'
 import { ITask, Task } from './components/Task'
 
 
-
-const listTasksRepos: ITask[] = [
-  {
-    id: uuid(),
-    description: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    completed: false
-  },
-  {
-    id: uuid(),
-    description: 'TESTE DOIS urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    completed: false
-  },
-  {
-    id: uuid(),
-    description: 'TESTE TRES urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    completed: false
-  },
-  {
-    id: uuid(),
-    description: 'TESTE COMPLETE urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.',
-    completed: true
-  },
-]
-
 function App() {
 
   const [listTasks, setListTasks] = useState([] as ITask[]);
@@ -45,10 +21,12 @@ function App() {
 
     setTotalTasks(countTasks);
     setTotalTasksCompleted(countTasksCompleted);
-    // setListTasks(listTasksRepos);
+    // setListTasks(listTasksExemples);
 
 
   }, [listTasks]);
+
+
 
 
   function handleCreateNewTask(event: FormEvent) {
@@ -61,17 +39,33 @@ function App() {
     } as ITask;
 
     setListTasks([...listTasks, newTask]);
+    setNewDescriptionTask('');
+
   }
 
-  function handleNewCommentChange(event: ChangeEvent<HTMLInputElement>) {
+  function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
     event.target.setCustomValidity('');
     setNewDescriptionTask(event.target.value);
   }
 
-  function handleNewDescriptionTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
+  function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
     event.target.setCustomValidity('Insira a descrição da tarefa.');
   }
 
+
+  function handleChangeCompleteTask(idTask: string) {
+    let listTasksUpdated: ITask[] = listTasks.map((task) => {
+
+      if (task.id === idTask)
+        task.completed = !task.completed;
+
+      return task;
+
+    });
+
+
+    setListTasks(listTasksUpdated);
+  }
 
   return (
     <div className={styles.App}>
@@ -82,8 +76,8 @@ function App() {
           <input
             placeholder='Adicione uma nova tarefa'
             value={newDescriptionTask}
-            onChange={handleNewCommentChange}
-            onInvalid={handleNewDescriptionTaskInvalid}
+            onChange={handleNewTaskChange}
+            onInvalid={handleNewTaskInvalid}
             required
           />
           <button type='submit'>Criar</button>
@@ -109,7 +103,13 @@ function App() {
               listTasks.length > 0 ?
                 listTasks.map(task => {
                   return (
-                    <Task key={task.id} id={task.id} description={task.description} completed={task.completed} />
+                    <Task
+                      key={task.id}
+                      id={task.id}
+                      description={task.description}
+                      completed={task.completed}
+                      onChangeCompleteTask={handleChangeCompleteTask}
+                    />
                   )
                 })
                 :
