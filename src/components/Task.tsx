@@ -1,13 +1,15 @@
 import { ChangeEvent, useState } from 'react';
 import styles from './Task.module.css';
 
-interface TaskProps {
-
+export interface ITask {
+  id: string;
+  description: string;
+  completed: boolean;
 }
 
-export function Task() {
+export function Task({ id, description, completed }: ITask) {
 
-  const [taskCompleted, setTaskCompleted] = useState(false);
+  const [taskCompleted, setTaskCompleted] = useState(completed);
 
   function handleCompletedTask(event: ChangeEvent<HTMLInputElement>) {
     setTaskCompleted(event.target.checked);
@@ -15,12 +17,13 @@ export function Task() {
   }
 
   return (
-    <div className={styles.task}>
+    <div className={styles.task} key={id}>
       <span>
-        <input type="checkbox" name="taskCompleted" id="" onChange={handleCompletedTask} />
-        {/* {taskCompleted && <CheckCircle className={styles['task-complete-icon']} size={26} weight="fill" color="#5e60ce" />} */}
+        <input type="checkbox" name="taskCompleted" id={id} checked={taskCompleted} onChange={handleCompletedTask} />
       </span>
-      <p className={taskCompleted ? styles['risk-text'] : undefined}> Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.</p>
+      <p className={taskCompleted ? styles['risk-text'] : undefined}>
+        {description}
+      </p>
     </div >
   )
 }
