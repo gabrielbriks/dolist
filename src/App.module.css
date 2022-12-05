@@ -1,0 +1,145 @@
+.App {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper .area-create {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 0 2.5rem;
+  margin-top: -2.7rem;
+}
+
+
+/* ## Area do input e button - Create Task ## */
+
+.area-create > input {
+  /* min-width: 39.8rem; */
+  width: 100%;
+  height: 3.3rem;
+  background: var(--gray-500);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.area-create > input:focus {
+  color: var(--gray-100);
+  outline: 1px solid var(--purple-dark);
+}
+
+.area-create button {
+  height: 3.25rem;
+  width: 5.6rem;
+  background: var(--blue-dark);
+  color: var(--gray-100);
+  border-radius: 8px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.area-create > button:hover {
+  background: var(--blue);
+  cursor: pointer;
+  transition: all 0.1s 0.1s;
+}
+
+
+/* ## Area de Listagem de Tasks ## */
+
+.area-list-tasks {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 46rem;
+  height: 700px;
+  /* background: var(--gray-500); */
+  justify-items: center;
+
+  margin-top: 4rem;
+
+}
+
+.header-list-tasks {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem 0.95rem;
+
+ 
+}
+
+
+
+.list-tasks{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+
+  border-top: 1px solid var(--gray-400);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+
+}
+
+.list-tasks .message-list-emtpy {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.header-count-tasks-created > strong{
+  color: var(--blue);
+  margin-right: 0.75rem;
+}
+
+.header-count-tasks-created > span { 
+  background: var(--gray-400);
+  color: var(--gray-200);
+  border-radius: 999px;
+  padding: 0.25rem;
+  width: 100%;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+
+
+.header-count-tasks-done > strong{
+  color: var(--purple);
+  margin-right: 0.75rem;
+}
+
+.header-count-tasks-done > span { 
+  background: var(--gray-400);
+  color: var(--gray-200);
+
+  border-radius: 999px;
+  padding: 0.25rem;
+  width: 100%;
+  font-weight: 600;
+  font-size: 0.75rem;
+}

@@ -1,0 +1,103 @@
+
+
+
+.task {
+  display: flex;
+  flex-direction: row;
+  background: var(--gray-400);
+  color: var(--gray-100);
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  min-height: 4.5rem;
+}
+
+.task > span {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.task input[type='checkbox'] {
+  margin-right: 1rem;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  position: relative;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 2px solid var(--blue-dark);
+  appearance: none;
+}
+
+.task input[type='checkbox']:not(:checked) {
+  background: transparent;
+}
+
+.task input[type='checkbox']:not(:checked):hover {
+  /* opacity: 0.2; */
+  background-color: var(--blue-dark);
+  
+}
+
+.task input[type='checkbox']:checked {
+  background-color: var(--purple-dark);
+  border: none;
+  opacity: 1;
+  background-image: url("../assets/check-circle-fill_.png");
+}
+
+.task input[type='checkbox']:checked:hover {
+  background-color: var(--purple);
+
+}
+
+
+.risk-text {
+  text-decoration: line-through;
+}
+
+/* .task-complete-icon {
+  position: relative;
+} */
+
+/* .task-btn-check {
+  background: transparent;
+  background-color: transparent;
+  border: none;
+} */
+
+/* .task-btn-check span {
+  padding: 0px;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+/* .unchecked-default {
+  position: relative;
+}
+
+.task-btn-check span:hover .unchecked-hover {
+  opacity: 1;
+}
+
+.task-btn-check span:hover .unchecked-default {
+  opacity: 0;
+} */
+
+/* .unchecked-hover {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 100ms;
+  transition-duration: 100ms;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  transition-property: opacity;
+} */
+
+
