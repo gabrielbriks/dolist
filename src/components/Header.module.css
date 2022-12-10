@@ -7,6 +7,24 @@
 }
 
 .title {
+  display: flex;
+  justify-items: center;
+  align-items: center;
   font-size: 2.5rem;
   font-weight: 900;
+}
+
+.title-to {
+  color: var(--blue);
+}
+
+.title-do {
+  color: var(--purple);
+}
+
+.logoSvg {
+  padding: 0;
+  height: 1.1em;
+  margin-top: 1rem;
+  margin-right: 0.7rem;
 }
