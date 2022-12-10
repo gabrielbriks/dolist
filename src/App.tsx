@@ -21,7 +21,6 @@ function App() {
 
     setTotalTasks(countTasks);
     setTotalTasksCompleted(countTasksCompleted);
-    // setListTasks(listTasksExemples);
 
 
   }, [listTasks]);
@@ -72,15 +71,19 @@ function App() {
       <Header />
 
       <main className={styles.wrapper}>
-        <form onSubmit={handleCreateNewTask} className={styles['area-create']}>
-          <input
-            placeholder='Adicione uma nova tarefa'
-            value={newDescriptionTask}
-            onChange={handleNewTaskChange}
-            onInvalid={handleNewTaskInvalid}
-            required
-          />
-          <button type='submit'>Criar</button>
+        <form onSubmit={handleCreateNewTask} className={styles['area-form']}>
+          <div>
+            <input
+              placeholder='Adicione uma nova tarefa'
+              value={newDescriptionTask}
+              onChange={handleNewTaskChange}
+              onInvalid={handleNewTaskInvalid}
+              required
+            />
+            <button type='submit'>Criar</button>
+          </div>
+
+
 
         </form>
 
