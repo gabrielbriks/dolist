@@ -66,6 +66,11 @@ function App() {
     setListTasks(listTasksUpdatedSortedByCompleted);
   }
 
+  function handleDeleteTask(idTask: string) {
+    let listTasksUpdated: ITask[] = listTasks.filter(t => t.id !== idTask);
+    setListTasks(listTasksUpdated);
+  }
+
   return (
     <div className={styles.App}>
       <Header />
@@ -112,6 +117,7 @@ function App() {
                       description={task.description}
                       completed={task.completed}
                       onChangeCompleteTask={handleChangeCompleteTask}
+                      onDeleteTask={handleDeleteTask}
                     />
                   )
                 })

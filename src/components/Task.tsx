@@ -1,3 +1,4 @@
+import { Trash } from 'phosphor-react';
 import { ChangeEvent, useState } from 'react';
 import styles from './Task.module.css';
 
@@ -6,9 +7,10 @@ export interface ITask {
   description: string;
   completed: boolean;
   onChangeCompleteTask: (id: string) => void;
+  onDeleteTask: (id: string) => void;
 }
 
-export function Task({ id, description, completed, onChangeCompleteTask }: ITask) {
+export function Task({ id, description, completed, onChangeCompleteTask, onDeleteTask }: ITask) {
 
   const [taskCompleted, setTaskCompleted] = useState(completed);
 
@@ -25,6 +27,15 @@ export function Task({ id, description, completed, onChangeCompleteTask }: ITask
       <p className={taskCompleted ? styles['risk-text'] : undefined}>
         {description}
       </p>
+
+      <button
+        title='Excluir tarefa'
+        onClick={() => onDeleteTask(id)}
+      >
+        <Trash
+          className={styles.iconTrash}
+        />
+      </button>
     </div >
   )
 }

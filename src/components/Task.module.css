@@ -1,9 +1,7 @@
-
-
-
 .task {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   background: var(--gray-400);
   color: var(--gray-100);
   align-items: center;
@@ -41,14 +39,46 @@
   background-color: var(--purple-dark);
   border: none;
   opacity: 1;
-  background-image: url("../assets/check-circle-fill_.png");
+  background-image: url('../assets/check-circle-fill_.png');
 }
 
 .task input[type='checkbox']:checked:hover {
   background-color: var(--purple);
 }
 
-
 .risk-text {
   text-decoration: line-through;
+}
+
+.task > p {
+  flex: 1;
+}
+
+.task > button {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  margin-right: 0.25rem;
+}
+
+.task > button:hover {
+  background: var(--gray-600);
+  cursor: pointer;
+  padding: 0.1rem;
+  border-radius: 4px;
+  transition: all 100ms;
+
+}
+
+.task > button .iconTrash {
+  color: var(--gray-300);
+  width: 24px;
+  height: 24px;
+}
+
+.task > button:hover .iconTrash {
+  color: var(--danger);
+
 }
