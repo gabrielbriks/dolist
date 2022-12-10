@@ -63,8 +63,8 @@ function App() {
 
     });
 
-
-    setListTasks(listTasksUpdated);
+    let listTasksUpdatedSortedByCompleted = listTasksUpdated.sort((a, b) => (a.completed > b.completed) ? 1 : -1);
+    setListTasks(listTasksUpdatedSortedByCompleted);
   }
 
   return (
